@@ -1,0 +1,22 @@
+registerCommand("admpw") 
+{
+  permission("admpw.perm")
+  arguments(player("player"),string("cmd"),integer("nbtimes"))
+  action(onlyPlayers = false)
+  {
+    val p = argument<Player>("player")
+    val cmd = argument<String>("cmd")
+	  val nbtimes = argument<Int>("nbtimes")
+	  if(cmd.equals("fall"))
+	  { 
+		  val command = "execute @a[name=${p.name}] ~ ~ ~ setblock ~ ~-1 ~ air"
+		  for (x in 0..nbtimes) 
+		  {
+			    delayTicks(1+(x*3)) 
+			    {	
+				      Server.console.executeCommand(command);
+			    }
+		  }
+	 }
+  }
+}
